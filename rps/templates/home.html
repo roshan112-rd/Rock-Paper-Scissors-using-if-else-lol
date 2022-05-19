@@ -1,0 +1,29 @@
+
+<form method="post" action="{% url 'home' %}">
+  {% csrf_token %}
+
+  <label for="rps">Choose:</label>
+  <select name="value" id="value">
+    <option value="rock">rock</option>
+    <option value="paper">paper</option>
+    <option value="scissors">scissors</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
+
+</form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+<h2>your choice </h2>
+    {% for value in value %}
+    {{value}}
+    {% endfor %}
+<h2>computer predixxon</h2>
+    {% for comp_random in comp_random %}
+    {{comp_random}}
+    {% endfor %}
+{% endif %}
